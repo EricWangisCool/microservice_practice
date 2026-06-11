@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "d0f04c63-4c91-44bb-9a67-0c7f2122fb39",
+		"name": "Microservice Flask API Collection",
+		"description": "Postman collection to test the Microservice Flask API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Member Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/v1/member/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"member",
+						"login"
+					]
+				},
+				"description": "Log in with credentials to obtain a mock JWT token."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Purchase Ticket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5002/api/v1/ticket",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5002",
+					"path": [
+						"api",
+						"v1",
+						"ticket"
+					]
+				},
+				"description": "Purchase tickets. Decrements the ticket count in memory."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Remaining Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5002/api/v1/ticket",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5002",
+					"path": [
+						"api",
+						"v1",
+						"ticket"
+					]
+				},
+				"description": "Query the current number of remaining tickets."
+			},
+			"response": []
+		},
+		{
+			"name": "4. Post Message (Shutdown Trigger)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"這是測試留言，送出第3次後伺服器會停機。\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5003/api/v1/message",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5003",
+					"path": [
+						"api",
+						"v1",
+						"message"
+					]
+				},
+				"description": "Leave a message. The 3rd request to this endpoint will trigger a server shutdown."
+			},
+			"response": []
+		},
+		{
+			"name": "5. Get Message List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5003/api/v1/messages",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5003",
+					"path": [
+						"api",
+						"v1",
+						"messages"
+					]
+				},
+				"description": "Fetch all messages that have been submitted to the server."
+			},
+			"response": []
+		}
+	]
+}
