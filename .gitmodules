@@ -1,3 +1,9 @@
 [submodule "member_service"]
 	path = member_service
 	url = https://github.com/EricWangisCool/member_service.git
+[submodule "message_service"]
+	path = message_service
+	url = https://github.com/EricWangisCool/message_service.git
+[submodule "ticket_service"]
+	path = ticket_service
+	url = https://github.com/EricWangisCool/ticket_service.git
